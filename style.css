@@ -1,0 +1,902 @@
+body {
+    font-family: 'Poppins', 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    font-size: 16px;
+    color: #333;
+}
+
+.container {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    margin-top: 10px;
+}
+
+h1, h2 {
+    color: #2d3748;
+    font-weight: 600;
+}
+
+h1 {
+    margin-bottom: 1.5rem;
+    font-size: 1.75rem;
+    background: linear-gradient(to right, #4776E6, #8E54E9);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 2px 10px rgba(71, 118, 230, 0.1);
+}
+
+.team-selection {
+    margin-bottom: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.team-button {
+    padding: 10px 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: #4776E6;
+    color: white;
+    font-size: 0.95em;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    margin-bottom: 5px;
+    box-shadow: 0 2px 5px rgba(71, 118, 230, 0.3);
+}
+
+.team-button:hover {
+    background-color: #3a5fc7;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(71, 118, 230, 0.4);
+}
+
+.team-button:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 3px rgba(71, 118, 230, 0.3);
+}
+
+.team-button.active {
+    background: linear-gradient(to right, #00b09b, #96c93d);
+    box-shadow: 0 2px 10px rgba(0, 176, 155, 0.3);
+}
+
+.user-list-container {
+    text-align: left;
+    margin-top: 20px;
+    max-height: 150px;
+    overflow-y: auto;
+    border-radius: 8px;
+    background-color: #f8f9fd;
+    padding: 10px;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+#userListTitle {
+    font-size: 1.2em;
+    margin-bottom: 15px;
+    color: #4a5568;
+    text-align: center;
+}
+
+#userList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#userList li {
+    background-color: #ffffff;
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    border-left: 5px solid #4776E6;
+    font-size: 1.1em;
+    color: #333;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+#userList li:hover {
+    transform: translateX(3px);
+}
+
+#userList li.active-selector {
+    border-left-color: #f6ad55;
+    font-weight: bold;
+    box-shadow: 0 0 15px rgba(246, 173, 85, 0.2);
+    animation: pulse 1.5s infinite;
+    background: linear-gradient(to right, white, #fff9f0);
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(246, 173, 85, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(246, 173, 85, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(246, 173, 85, 0); }
+}
+
+.schedule-input-container {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #e2e8f0;
+    text-align: left;
+    background-color: #f8f9fd;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.schedule-input-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #3a5fc7;
+}
+
+.date-inputs, .limit-inputs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 20px;
+    align-items: stretch;
+    flex-direction: column;
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
+}
+
+.date-inputs label, .limit-inputs label {
+    font-weight: 600;
+    color: #4a5568;
+    margin-bottom: 5px;
+}
+
+.date-inputs input[type="date"], .limit-inputs input[type="number"] {
+    padding: 12px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 1em;
+    flex: 1; 
+    min-width: 120px;
+    transition: all 0.3s ease;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.date-inputs input[type="date"]:focus, .limit-inputs input[type="number"]:focus {
+    border-color: #4776E6;
+    box-shadow: 0 0 0 3px rgba(71, 118, 230, 0.1);
+    outline: none;
+}
+
+.auto-schedule-toggle {
+    display: flex;
+    align-items: center;
+    margin: 15px 0;
+    padding: 15px;
+    background-color: #ebf4ff;
+    border-radius: 8px;
+    border: 1px solid #bee3f8;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.rotativa-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+}
+
+.rotativa-toggle input[type="checkbox"] {
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+    accent-color: #4776E6;
+}
+
+.rotativa-toggle .tooltip {
+    position: absolute;
+    bottom: -30px;
+    left: 0;
+    background-color: #2d3748;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s;
+    width: 200px;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.rotativa-toggle:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
+.view-schedules-button {
+    background: linear-gradient(to right, #6a3de8, #8E54E9);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 15px;
+    cursor: pointer;
+    margin-left: auto;
+    font-size: 0.95em;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(106, 61, 232, 0.3);
+}
+
+.view-schedules-button:hover {
+    background: linear-gradient(to right, #5730c5, #7e48d2);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(106, 61, 232, 0.4);
+}
+
+.view-schedules-button:active {
+    transform: translateY(0);
+}
+
+.calendar-container {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 15px; 
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.month-container {
+    background-color: #fff;
+    border: 1px solid #edf2f7;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+    min-width: 100%; 
+}
+
+.month-header {
+    text-align: center;
+    font-size: 1.1em;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #4776E6;
+    text-transform: capitalize;
+}
+
+.days-of-week {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    font-size: 0.9em;
+    color: #718096;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.days-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+    text-align: center;
+}
+
+.day {
+    padding: 8px 5px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9em;
+    position: relative; 
+    background-color: #f1f5f9; 
+    color: #4a5568;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.day:hover {
+    background-color: #e2e8f0;
+    transform: scale(1.05);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.day.selected {
+    background: linear-gradient(to bottom right, #00b09b, #96c93d); 
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0, 176, 155, 0.3);
+}
+
+.day.selected:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 176, 155, 0.4);
+}
+
+.day.selected.holiday {
+    background: linear-gradient(to bottom right, #f56565, #ed8936); 
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(245, 101, 101, 0.3);
+}
+
+.day.selected.holiday:hover {
+    box-shadow: 0 4px 8px rgba(245, 101, 101, 0.4);
+}
+
+.day.disabled {
+    cursor: not-allowed;
+    background-color: #f7fafc;
+    color: #cbd5e0;
+    opacity: 0.7;
+    transform: none;
+    box-shadow: none;
+}
+
+.schedule-buttons { 
+    display: flex;
+    gap: 15px; 
+    margin-top: 25px;
+    justify-content: center; 
+    flex-wrap: wrap; 
+    flex-direction: column;
+}
+
+.schedule-buttons button { 
+    flex-grow: 1; 
+    min-width: 120px; 
+    padding: 14px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    touch-action: manipulation;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.schedule-buttons button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.schedule-buttons button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#generateScheduleButton {
+    background: linear-gradient(to right, #4776E6, #8E54E9);
+    color: white;
+}
+
+#generateScheduleButton:hover {
+    background: linear-gradient(to right, #3a5fc7, #7e48d2);
+}
+
+#saveScheduleButton { 
+    background: linear-gradient(to right, #f6ad55, #ed8936); 
+    color: white;
+}
+
+#saveScheduleButton:hover {
+    background: linear-gradient(to right, #ed8936, #dd6b20); 
+}
+
+#resetScheduleButton { 
+    background: linear-gradient(to right, #f56565, #e53e3e); 
+    color: white;
+}
+
+#resetScheduleButton:hover {
+    background: linear-gradient(to right, #e53e3e, #c53030); 
+}
+
+#pdfScheduleButton {
+    background: linear-gradient(to right, #4c51bf, #6b46c1);
+    color: white;
+}
+
+#pdfScheduleButton:hover {
+    background: linear-gradient(to right, #434190, #553c9a);
+}
+
+#exceptionButton { 
+    background: linear-gradient(to right, #718096, #4a5568); 
+    color: white;
+}
+
+#exceptionButton:hover {
+    background: linear-gradient(to right, #4a5568, #2d3748); 
+}
+
+#newScheduleButton { 
+    background: linear-gradient(to right, #38b2ac, #319795); 
+    color: white;
+}
+
+#newScheduleButton:hover {
+    background: linear-gradient(to right, #319795, #2c7a7b); 
+}
+
+.generated-schedule-container {
+     margin-top: 30px;
+     padding: 20px;
+     border-top: 1px solid #e2e8f0;
+     text-align: left;
+     background-color: #f8f9fd;
+     border-radius: 12px;
+     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+#generatedScheduleTitle {
+     text-align: center;
+     margin-bottom: 20px;
+     color: #2d3748;
+     font-size: 1.3em;
+     font-weight: 600;
+}
+
+#generatedScheduleList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#generatedScheduleList li {
+    background-color: #ffffff;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    border-left: 5px solid #38b2ac; 
+    font-size: 1.1em;
+    color: #4a5568;
+    cursor: pointer; 
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+}
+
+#generatedScheduleList li:hover:not(.full):not(.disabled) {
+     background-color: #e6fffa; 
+     border-left-color: #319795; 
+     transform: translateX(5px);
+}
+
+#generatedScheduleList li.full {
+    background-color: #fff5f5; 
+    border-left-color: #f56565; 
+    cursor: not-allowed;
+}
+
+#generatedScheduleList li.disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+    color: #a0aec0;
+}
+
+#generatedScheduleList li strong {
+    color: #4776E6; 
+    margin-right: 5px;
+}
+
+#generatedScheduleList li.holiday-date {
+    border-left-color: #f56565;
+    background-color: #fff5f5;
+}
+
+#generatedScheduleList li.holiday-date strong {
+    color: #e53e3e;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.section-header h2 {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    color: #2d3748;
+}
+
+.section-info {
+    font-size: 0.85em;
+    color: #4a5568;
+    margin-left: 10px;
+    background-color: #edf2f7;
+    padding: 5px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.toggle-button {
+    background: linear-gradient(to right, #4776E6, #8E54E9);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(71, 118, 230, 0.3);
+}
+
+.toggle-button:hover {
+    background: linear-gradient(to right, #3a5fc7, #7e48d2);
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(71, 118, 230, 0.4);
+}
+
+.exception-modal, .saved-schedules-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(3px);
+}
+
+.exception-modal-content, .saved-schedules-content {
+    background-color: #fff;
+    margin: 10% auto; 
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    width: 90%; 
+    max-width: 500px;
+    border: 1px solid #e2e8f0;
+}
+
+.exception-modal-header, .saved-schedules-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 10px;
+}
+
+.exception-modal-header h3, .saved-schedules-header h3 {
+    color: #2d3748;
+    margin: 0;
+}
+
+.close-modal {
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #718096;
+    transition: color 0.3s ease;
+    padding: 0 10px;
+}
+
+.close-modal:hover {
+    color: #e53e3e;
+}
+
+.exception-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; 
+}
+
+.form-group label {
+    font-weight: 600;
+    color: #4a5568;
+}
+
+.form-group select, 
+.form-group input {
+    padding: 12px 15px; 
+    font-size: 16px; 
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.form-group select:focus,
+.form-group input:focus {
+    border-color: #4776E6;
+    box-shadow: 0 0 0 3px rgba(71, 118, 230, 0.1);
+    outline: none;
+}
+
+.exception-form button {
+    padding: 15px; 
+    background: linear-gradient(to right, #4776E6, #8E54E9);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 15px;
+    box-shadow: 0 3px 10px rgba(71, 118, 230, 0.2);
+    transition: all 0.3s ease;
+}
+
+.exception-form button:hover {
+    background: linear-gradient(to right, #3a5fc7, #7e48d2);
+    box-shadow: 0 5px 15px rgba(71, 118, 230, 0.3);
+    transform: translateY(-2px);
+}
+
+.schedules-list {
+    max-height: 400px;
+    overflow-y: auto;
+    margin-bottom: 15px;
+    padding-right: 10px;
+}
+
+.schedule-item {
+    padding: 15px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
+}
+
+.schedule-item:hover {
+    background-color: #f7fafc;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    border-color: #4776E6;
+}
+
+.schedule-item.current-schedule {
+    border-left: 4px solid #38b2ac;
+    background-color: #e6fffa;
+}
+
+.archive-date {
+    font-size: 0.8em;
+    color: #718096;
+    margin-top: 8px;
+}
+
+.no-schedules {
+    color: #718096;
+    font-style: italic;
+    text-align: center;
+    padding: 30px;
+}
+
+.add-to-home {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    background: linear-gradient(145deg, #ffffff, #f0f0f0);
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1), 
+                inset 0 -2px 5px rgba(0, 0, 0, 0.05);
+    z-index: 1000;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.add-to-home:hover {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15),
+                inset 0 -2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.add-to-home:active {
+    transform: scale(0.95);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1),
+                inset 0 2px 3px rgba(0, 0, 0, 0.1);
+}
+
+.add-to-home img {
+    width: 24px;
+    height: 24px;
+}
+
+.add-to-home-tooltip {
+    position: absolute;
+    right: 55px;
+    background-color: #2d3748;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 13px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+    transform: translateX(10px);
+    pointer-events: none;
+}
+
+.add-to-home-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -5px;
+    margin-top: -5px;
+    border-width: 5px 0 5px 5px;
+    border-style: solid;
+    border-color: transparent transparent transparent #2d3748;
+}
+
+.add-to-home:hover .add-to-home-tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+}
+
+.assigned-users-list {
+    margin-top: 15px;
+    margin-bottom: 20px;
+    background-color: #f8f9fd;
+    border-radius: 8px;
+    padding: 15px;
+    border: 1px solid #e2e8f0;
+}
+
+.assigned-users-list h4 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #4a5568;
+    font-weight: 600;
+}
+
+.assigned-user-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 8px;
+    background-color: white;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    border-left: 4px solid #4776E6;
+}
+
+.user-remove-btn {
+    background: linear-gradient(to right, #f56565, #e53e3e);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-size: 0.9em;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.user-remove-btn:hover {
+    background: linear-gradient(to right, #e53e3e, #c53030);
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(229, 62, 62, 0.3);
+}
+
+@media screen and (min-width: 768px) {
+    body {
+        padding: 20px;
+    }
+    
+    .container {
+        padding: 20px 30px;
+        max-width: 600px;
+    }
+    
+    .team-button {
+        padding: 10px 15px;
+        font-size: 1em;
+    }
+    
+    .date-inputs, .limit-inputs, .auto-schedule-toggle {
+        flex-direction: row;
+        align-items: center;
+    }
+    
+    .limit-inputs {
+        flex-wrap: nowrap;
+    }
+    
+    .month-container {
+        min-width: 250px;
+    }
+    
+    .days-grid {
+        gap: 5px;
+    }
+    
+    .day {
+        padding: 8px 5px;
+        font-size: 0.95em;
+    }
+    
+    .schedule-buttons {
+        flex-direction: row;
+    }
+    
+    .exception-modal-content, .saved-schedules-content {
+        margin: 10% auto;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    body {
+        padding: 5px;
+    }
+    
+    .container {
+        padding: 10px;
+    }
+    
+    h1 {
+        font-size: 1.5em;
+    }
+    
+    h2 {
+        font-size: 1.3em;
+    }
+    
+    .team-button {
+        padding: 10px 12px;
+        font-size: 0.9em;
+    }
+    
+    .day {
+        padding: 4px 2px;
+        font-size: 0.8em;
+    }
+    
+    .exception-modal-content, .saved-schedules-content {
+        margin: 5% auto;
+        padding: 15px;
+        width: 95%;
+    }
+}

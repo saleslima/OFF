@@ -1,0 +1,126 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team User List</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="favicon.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <meta name="theme-color" content="#4776E6">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="COPOM-OFF">
+    <script type="importmap">
+        {
+            "imports": {
+                "firebase/app": "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js",
+                "firebase/database": "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js"
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="add-to-home" id="addToHomeButton">
+        <img src="192.png" alt="Add to Home">
+        <span class="add-to-home-tooltip">Adicionar à tela inicial (OFF)</span>
+    </div>
+    
+    <div class="container">
+        <h1>Selecione a Equipe</h1>
+        <div class="team-selection" id="teamSelection">
+            <!-- Team buttons will be populated here by script.js -->
+        </div>
+
+        <div class="user-list-container">
+            <h2 id="userListTitle">Selecione uma equipe para ver os usuários</h2>
+            <ul id="userList">
+                <!-- Users will be displayed here -->
+            </ul>
+        </div>
+
+        <div class="schedule-input-container" id="scheduleInputContainer">
+            <div class="section-header">
+                <h2>Gerar Escala para a Equipe <span id="scheduleInfo" class="section-info"></span></h2>
+                <button id="toggleScheduleSection" class="toggle-button">−</button>
+            </div>
+            <div class="date-inputs">
+                <label for="startDate">Data Inicial:</label>
+                <input type="date" id="startDate">
+                <label for="endDate">Data Final:</label>
+                <input type="date" id="endDate">
+            </div>
+            <div class="limit-inputs">
+                <label for="maxWeekdays">Máx Dias Semana:</label>
+                <input type="number" id="maxWeekdays" value="5" min="0">
+                <label for="maxWeekends">Máx Dias Fim Semana:</label>
+                <input type="number" id="maxWeekends" value="2" min="0">
+            </div>
+            <div class="auto-schedule-toggle">
+                <label for="useAutoSchedule">Usar Escala Automática:</label>
+                <input type="checkbox" id="useAutoSchedule">
+                <div class="rotativa-toggle">
+                    <label for="useRotativaSystem">Sistema Rotativo:</label>
+                    <input type="checkbox" id="useRotativaSystem">
+                    <span class="tooltip">Prioriza quem não escolheu dias vermelhos na escala anterior</span>
+                </div>
+                <button id="viewSavedSchedulesButton" class="view-schedules-button">Consultar Escalas</button>
+            </div>
+            <div class="calendar-container" id="calendarContainer">
+                <!-- Calendar will be displayed here -->
+            </div>
+            <div class="schedule-buttons"> 
+                 <button id="generateScheduleButton">Gerar Escala</button>
+                 <button id="saveScheduleButton">Salvar Escala</button> 
+                 <button id="resetScheduleButton">Reset Escala</button> 
+                 <button id="pdfScheduleButton">Escala PDF</button>
+                 <button id="exceptionButton">Exceção</button>
+                 <button id="newScheduleButton">Nova Escala</button>
+            </div>
+        </div>
+
+        <div class="generated-schedule-container">
+            <h2 id="generatedScheduleTitle" style="display: none;">Escala Gerada</h2>
+            <ul id="generatedScheduleList">
+                <!-- Generated schedule will be displayed here -->
+            </ul>
+        </div>
+    </div>
+
+    <div id="exceptionModal" class="exception-modal">
+        <div class="exception-modal-content">
+            <div class="exception-modal-header">
+                <h3>Gerenciar Exceções de Escala</h3>
+                <span class="close-modal" id="closeModal">&times;</span>
+            </div>
+            <div class="exception-form">
+                <div class="form-group">
+                    <label for="exceptionDate">Selecione a Data:</label>
+                    <select id="exceptionDate"></select>
+                </div>
+                <div class="form-group">
+                    <label for="vacancyAction">Ação:</label>
+                    <select id="vacancyAction">
+                        <option value="add">Adicionar Vaga</option>
+                        <option value="remove">Remover Vaga</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="vacancyCount">Quantidade:</label>
+                    <input type="number" id="vacancyCount" min="1" value="1">
+                </div>
+                <div id="assignedUsersList" class="assigned-users-list" style="display: none;">
+                    <h4>Usuários Designados:</h4>
+                    <div id="assignedUsersContainer"></div>
+                </div>
+                <button id="applyException">Aplicar Exceção</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>
